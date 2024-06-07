@@ -1,5 +1,16 @@
 # USBKWA -- USB Keyboard Web App
 
+# Отличия от оригинала
+- создается собственная Wi-Fi сеть USB-KeyBoard, с паролем 12345678 (отсутствие 
+зависимости от внешних Wi-Fi устройств)
+- добавлены русские буквы (и вообще символы русской раскладки), красным цветом
+- изменено масштабирование (теперь работает не только на планшетах, но и на телефоне)
+- добавлена кнопка в районе курсора, которая переводит на новую страницу (SVG значок взят с https://svgicons.sparkk.fr/)
+- добавлена страница с формой ввода текста, которая позволяет скопипастить 
+пароль или иной произвольный кусок текста, и автоматически посимвольно ввести его через "клавиатуру"
+
+# Описание оригинала
+
 USBKWA (USB Keyboard Web App) turns a large tablet or any device with a Web
 browser into a USB keyboard. Anyone having difficulties using a regular
 keyboard may find a touch keyboard easier to use. More than one browser

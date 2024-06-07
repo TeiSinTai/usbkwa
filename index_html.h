@@ -3,9 +3,13 @@ static const char PROGMEM INDEX_HTML[] = R"rawliteral(
 <html lang=en>
 <head>
 <meta charset="UTF-8">
-<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=0">
+<meta name = "viewport" content = "width=device-width, initial-scale = 1.0, user-scalable=0">
 <title>USB Touch keyboard</title>
 <style type="text/css">
+    body {
+      width: 90vw;
+      height: 90vh;
+    }
     table {
         position: absolute;
         top: 0;
@@ -16,12 +20,17 @@ static const char PROGMEM INDEX_HTML[] = R"rawliteral(
         width: 100%;
         border-collapse: collapse;
     }
-
     td {
+        padding: 5px;
         width: 5.88%;
         border: 1px solid;
-        font-size: 150%;
-        text-align: center;
+        font-size: 1.5vw;
+        text-align: left;
+    }
+
+    td p {
+        color: red;
+        display: inline;
     }
 </style>
 <script type="text/javascript">
@@ -48,14 +57,14 @@ let gridData = [
     { cellLabel: "Pause<br>Break"},
   ],
   [ // Keyboard row 1
-    { cellLabel: "~<br>`"},
+    { cellLabel: "~<br>`&nbsp;<p>ё</p>"},
     { cellLabel: "!<br>1"},
-    { cellLabel: "@<br>2"},
-    { cellLabel: "#<br>3"},
-    { cellLabel: "$<br>4"},
+    { cellLabel: "@<br>2&nbsp;<p>\"</p>"},
+    { cellLabel: "#<br>3&nbsp;<p>№</p>"},
+    { cellLabel: "$<br>4&nbsp;<p>;</p>"},
     { cellLabel: "%<br>5"},
-    { cellLabel: "^<br>6"},
-    { cellLabel: "&<br>7"},
+    { cellLabel: "^<br>6&nbsp;<p>:</p>"},
+    { cellLabel: "&<br>7&nbsp;<p>?</p>"},
     { cellLabel: "*<br>8"},
     { cellLabel: "(<br>9"},
     { cellLabel: ")<br>0"},
@@ -68,53 +77,53 @@ let gridData = [
   ],
   [ // Keyboard row 2
     { cellLabel: "Tab", colSpan: 2},
-    { cellLabel: "Q"},
-    { cellLabel: "W"},
-    { cellLabel: "E"},
-    { cellLabel: "R"},
-    { cellLabel: "T"},
-    { cellLabel: "Y"},
-    { cellLabel: "U"},
-    { cellLabel: "I"},
-    { cellLabel: "O"},
-    { cellLabel: "P"},
-    { cellLabel: "{<br>["},
-    { cellLabel: "}<br>]"},
-    { cellLabel: "|<br>\\"},
+    { cellLabel: "Q&nbsp;<p>Й</p>"},
+    { cellLabel: "W&nbsp;<p>Ц</p>"},
+    { cellLabel: "E&nbsp;<p>У</p>"},
+    { cellLabel: "R&nbsp;<p>К</p>"},
+    { cellLabel: "T&nbsp;<p>Е</p>"},
+    { cellLabel: "Y&nbsp;<p>Н</p>"},
+    { cellLabel: "U&nbsp;<p>Г</p>"},
+    { cellLabel: "I&nbsp;<p>Ш</p>"},
+    { cellLabel: "O&nbsp;<p>Щ</p>"},
+    { cellLabel: "P&nbsp;<p>З</p>"},
+    { cellLabel: "{<br>[&nbsp;<p>Х</p>"},
+    { cellLabel: "}<br>]&nbsp;<p>Ъ</p>"},
+    { cellLabel: "|<br>\\&nbsp;<p>/</p>"},
     { cellLabel: "Delete"},
     { cellLabel: "End"},
     { cellLabel: "Page<br>Down"},
   ],
   [ // Keyboard row 3
     { cellLabel: "Caps<br>Lock", colSpan: 2},
-    { cellLabel: "A"},
-    { cellLabel: "S"},
-    { cellLabel: "D"},
-    { cellLabel: "F"},
-    { cellLabel: "G"},
-    { cellLabel: "H"},
-    { cellLabel: "J"},
-    { cellLabel: "K"},
-    { cellLabel: "L"},
-    { cellLabel: ":<br>;"},
-    { cellLabel: "\"<br>\'"},
+    { cellLabel: "A&nbsp;<p>Ф</p>"},
+    { cellLabel: "S&nbsp;<p>Ы</p>"},
+    { cellLabel: "D&nbsp;<p>В</p>"},
+    { cellLabel: "F&nbsp;<p>А</p>"},
+    { cellLabel: "G&nbsp;<p>П</p>"},
+    { cellLabel: "H&nbsp;<p>Р</p>"},
+    { cellLabel: "J&nbsp;<p>О</p>"},
+    { cellLabel: "K&nbsp;<p>Л</p>"},
+    { cellLabel: "L&nbsp;<p>Д</p>"},
+    { cellLabel: ":<br>;&nbsp;<p>Ж</p>"},
+    { cellLabel: "\"<br>\'&nbsp;<p>Э</p>"},
     { cellLabel: "Enter", colSpan: 2},
-    { cellLabel: ""},
+    { cellLabel: "<svg class=\"svg-icon\" viewBox=\"0 0 20 20\"><path d=\"M18.303,4.742l-1.454-1.455c-0.171-0.171-0.475-0.171-0.646,0l-3.061,3.064H2.019c-0.251,0-0.457,0.205-0.457,0.456v9.578c0,0.251,0.206,0.456,0.457,0.456h13.683c0.252,0,0.457-0.205,0.457-0.456V7.533l2.144-2.146C18.481,5.208,18.483,4.917,18.303,4.742 M15.258,15.929H2.476V7.263h9.754L9.695,9.792c-0.057,0.057-0.101,0.13-0.119,0.212L9.18,11.36h-3.98c-0.251,0-0.457,0.205-0.457,0.456c0,0.253,0.205,0.456,0.457,0.456h4.336c0.023,0,0.899,0.02,1.498-0.127c0.312-0.077,0.55-0.137,0.55-0.137c0.08-0.018,0.155-0.059,0.212-0.118l3.463-3.443V15.929z M11.241,11.156l-1.078,0.267l0.267-1.076l6.097-6.091l0.808,0.808L11.241,11.156z\"></path></svg>"},
     { cellLabel: ""},
     { cellLabel: ""},
   ],
   [ // Keyboard row 4
     { cellLabel: "Shift", colSpan: 2},
-    { cellLabel: "Z"},
-    { cellLabel: "X"},
-    { cellLabel: "C"},
-    { cellLabel: "V"},
-    { cellLabel: "B"},
-    { cellLabel: "N"},
-    { cellLabel: "M"},
-    { cellLabel: "\<<br>,"},
-    { cellLabel: "\><br>."},
-    { cellLabel: "?<br>/"},
+    { cellLabel: "Z&nbsp;<p>Я</p>"},
+    { cellLabel: "X&nbsp;<p>Ч</p>"},
+    { cellLabel: "C&nbsp;<p>С</p>"},
+    { cellLabel: "V&nbsp;<p>М</p>"},
+    { cellLabel: "B&nbsp;<p>И</p>"},
+    { cellLabel: "N&nbsp;<p>Т</p>"},
+    { cellLabel: "M&nbsp;<p>Ь</p>"},
+    { cellLabel: "\<<br>,&nbsp;<p>Б</p>"},
+    { cellLabel: "\><br>.&nbsp;<p>Ю</p>"},
+    { cellLabel: "?&nbsp;<p>,</p><br>/&nbsp;<p>.</p>"},
     { cellLabel: "Shift", colSpan: 3},
     { cellLabel: ""},
     { cellLabel: "Up<br>Arrow"},
@@ -140,6 +149,10 @@ function touch_start(event) {
     e = document.getElementById(this.id);
     e.style.backgroundColor = "yellow";
     var json = JSON.stringify({event:'touch start', name:this.innerHTML, row:this.row, col:this.col});
+    if(this.row === 3 && this.col === 13){
+      window.location = "/form.html";
+      return false;
+    }
     if (!connected) {
         setTimeout(function(json) {
             websock.send(json);
@@ -180,6 +193,10 @@ function button_click(event) {
 }
 function double_click(event) {
     event.preventDefault();
+    if(this.row === 3 && this.col === 13){
+      window.location = "/form.html";
+      return false;
+    }
     console.log('double click', this.id, this.innerHTML, event);
 }
 function context_menu(event) {
@@ -216,19 +233,6 @@ function generateGrid(cols, rows, cellData, id) {
             c++;
         }
         r++;
-    }
-}
-
-var FullPage = document.documentElement;
-function openFullscreen() {
-    if (FullPage.requestFullscreen) {
-        FullPage.requestFullscreen();
-    } else if (FullPage.mozRequestFullScreen) { /* Firefox */
-        FullPage.mozRequestFullScreen();
-    } else if (FullPage.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
-        FullPage.webkitRequestFullscreen();
-    } else if (FullPage.msRequestFullscreen) { /* IE/Edge */
-        FullPage.msRequestFullscreen();
     }
 }
 

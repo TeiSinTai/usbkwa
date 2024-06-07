@@ -63,6 +63,11 @@ WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
 #include "index_html.h"
+#include "form_html.h"
+
+// Replace with your network credentials
+const char* ssid     = "ESP32-USB-KeyBoard";
+const char* password = "12345678";
 
 const int MAX_ROWS = 6;
 const int MAX_COLS = 17;
@@ -152,6 +157,12 @@ void handleRoot()
   server.send(200, "text/html", INDEX_HTML);
 }
 
+void handleForm()
+{
+  server.send(200, "text/html", FORM_HTML);
+}
+
+
 void handleNotFound()
 {
   String message = "File Not Found\n\n";
@@ -170,7 +181,7 @@ void handleNotFound()
 
 void setup()
 {
-  WiFi.mode(WIFI_STA); // explicitly set mode, esp defaults to STA+AP
+  WiFi.softAP(ssid, password);
   DBG_begin(115200);
 
   USB.usbClass(0);
@@ -180,7 +191,7 @@ void setup()
   USB.begin();
 
   //WiFiManager, Local intialization. Once its business is done, there is no need to keep it around
-  WiFiManager wm;
+  //WiFiManager wm;
 
   //reset settings - wipe credentials for testing
   //wm.resetSettings();
@@ -190,16 +201,16 @@ void setup()
   // if empty will auto generate SSID, if password is blank it will be anonymous AP (wm.autoConnect())
   // then goes into a blocking loop awaiting configuration and will return success result
 
-  bool res;
+  //bool res;
   // res = wm.autoConnect(); // auto generated AP name from chipid
-  res = wm.autoConnect("usbkeyboard");
+  //res = wm.autoConnect("usbkeyboard");
   // res = wm.autoConnect("AutoConnectAP","password"); // password protected ap
 
-  if(!res) {
-      DBG_println(F("Failed to connect"));
-      delay(1000);
-      ESP.restart();
-  }
+  //if(!res) {
+  //    DBG_println(F("Failed to connect"));
+  //    delay(1000);
+  //    ESP.restart();
+  //}
 
   if (mdns.begin("usbkeyboard")) {
     DBG_println(F("MDNS responder started"));
@@ -213,6 +224,7 @@ void setup()
   DBG_println(WiFi.localIP());
 
   server.on("/", handleRoot);
+  server.on("/form.html", handleForm);
   server.onNotFound(handleNotFound);
 
   server.begin();
