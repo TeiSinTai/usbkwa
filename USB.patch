@@ -1,0 +1,11 @@
+--- USBHID.cpp.orig	2024-06-06 13:23:39.000000000 +0300
++++ USBHID.cpp	2024-07-02 17:48:05.000000000 +0300
+@@ -206,7 +206,7 @@
+   uint8_t descriptor[TUD_HID_INOUT_DESC_LEN] = {
+     // HID Input & Output descriptor
+     // Interface number, string index, protocol, report descriptor len, EP OUT & IN address, size & polling interval
+-    TUD_HID_INOUT_DESCRIPTOR(*itf, str_index, tinyusb_interface_protocol, tinyusb_hid_device_descriptor_len, ep_out, (uint8_t)(0x80 | ep_in), 64, 1)
++    TUD_HID_INOUT_DESCRIPTOR(*itf, str_index, tinyusb_interface_protocol, tinyusb_hid_device_descriptor_len, ep_out, (uint8_t)(0x80 | ep_in), 8, 10)
+   };
+   *itf += 1;
+   memcpy(dst, descriptor, TUD_HID_INOUT_DESC_LEN);

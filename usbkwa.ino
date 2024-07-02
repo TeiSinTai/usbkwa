@@ -32,7 +32,6 @@
  * SOFTWARE.
  */
 
-
 #include <USB.h>
 #include <USBHIDKeyboard.h>
 #include <WiFi.h>
@@ -41,6 +40,8 @@
 #include <WebServer.h>
 #include <ESPmDNS.h>
 #include <ArduinoJson.h>  // Install from IDE Library manager
+
+
 
 #define DEBUG_ON  0
 #if DEBUG_ON
@@ -73,7 +74,7 @@ const int MAX_ROWS = 6;
 const int MAX_COLS = 17;
 const uint8_t Keycodes[MAX_ROWS][MAX_COLS] = {
   // Row 0 (top row)
-  {KEY_TAB, KEY_F1 , KEY_F2 , KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12},
+  {KEY_ESC, KEY_F1 , KEY_F2 , KEY_F3, KEY_F4, KEY_F5, KEY_F6, KEY_F7, KEY_F8, KEY_F9, KEY_F10, KEY_F11, KEY_F12},
   // Row 1
   {'`',     '1',    '2',     '3',    '4',    '5',    '6',    '7',    '8',    '9',    '0',     '-',     '+',     '\b', KEY_INSERT, KEY_HOME, KEY_PAGE_UP},
   // Row 2
@@ -181,7 +182,6 @@ void handleNotFound()
 
 void setup()
 {
-  WiFi.softAP(ssid, password);
   DBG_begin(115200);
 
   USB.usbClass(0);
@@ -189,29 +189,9 @@ void setup()
   USB.usbProtocol(0);
   Keyboard.begin();
   USB.begin();
-
-  //WiFiManager, Local intialization. Once its business is done, there is no need to keep it around
-  //WiFiManager wm;
-
-  //reset settings - wipe credentials for testing
-  //wm.resetSettings();
-
-  // Automatically connect using saved credentials,
-  // if connection fails, it starts an access point with the specified name ( "AutoConnectAP"),
-  // if empty will auto generate SSID, if password is blank it will be anonymous AP (wm.autoConnect())
-  // then goes into a blocking loop awaiting configuration and will return success result
-
-  //bool res;
-  // res = wm.autoConnect(); // auto generated AP name from chipid
-  //res = wm.autoConnect("usbkeyboard");
-  // res = wm.autoConnect("AutoConnectAP","password"); // password protected ap
-
-  //if(!res) {
-  //    DBG_println(F("Failed to connect"));
-  //    delay(1000);
-  //    ESP.restart();
-  //}
-
+  
+  WiFi.softAP(ssid, password);
+  
   if (mdns.begin("usbkeyboard")) {
     DBG_println(F("MDNS responder started"));
     mdns.addService("http", "tcp", 80);
