@@ -63,8 +63,8 @@ MDNSResponder mdns;
 WebServer server(80);
 WebSocketsServer webSocket = WebSocketsServer(81);
 
-#include "index_html.h"
-#include "form_html.h"
+#include "index.html"
+#include "form.html"
 
 // Replace with your network credentials
 const char* ssid     = "ESP32-USB-KeyBoard";
